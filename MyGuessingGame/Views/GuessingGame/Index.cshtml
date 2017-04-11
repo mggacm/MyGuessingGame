@@ -1,7 +1,56 @@
-﻿
+﻿@model MyGuessingGame.Models.GuessingGameModel 
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Guessing Game";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
+@if (!(ViewBag.Win ?? false))
+{
+
+
+    <div class="form-horizontal" >
+        @Html.ValidationSummary(
+       false,                           // bool? 
+       "",                              // string
+       new { @class = "text-danger" }) <!--TODO ask about this <  -->
+
+        <div class="form-group">
+            @Html.LabelFor(
+           m => m.PlayerName,
+           htmlAttributes: new { @Class = "control-lable col-md-2" })
+
+            <div class="col-md-10">
+                @Html.EditorFor(
+               m => m.PlayerName,
+               new {  htmlAttributes = new { @class = "form-control"}})
+                @Html.ValidationMessageFor(
+               m => m.PlayerName,
+               "",
+               new {  @class = "text-dander"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(
+           m => m.Guess,            //Changed to Guess
+           htmlAttributes: new { @Class = "control-lable col-md-2" })
+
+            <div class="col-md-10">
+                @Html.EditorFor(
+               m => m.Guess,            //Changed to Guess  the other property
+               new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(
+               m => m.PlayerName,
+               "",
+               new { @class = "text-dander" })
+            </div>
+        </div>
+
+    </div>
+}
+else
+{
+
+}
