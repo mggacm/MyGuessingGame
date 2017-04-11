@@ -8,43 +8,47 @@
 
 @if (!(ViewBag.Win ?? false))
 {
-
-
+    if (ViewBag.Win != null)
+    {
+        <h2>Sorry Try again. @Model.Guess  was wrong.</h2>
+    }
+    using (Html.BeginForm())
+    {
     <div class="form-horizontal" >
         @Html.ValidationSummary(
-       false,                           // bool? 
-       "",                              // string
-       new { @class = "text-danger" }) <!--TODO ask about this <  -->
+             false,                           // bool? 
+             "",                              // string
+             new { @class = "text-danger" }) <!--TODO ask about this <  -->
 
         <div class="form-group">
             @Html.LabelFor(
-           m => m.PlayerName,
-           htmlAttributes: new { @Class = "control-lable col-md-2" })
+             m => m.PlayerName,
+             htmlAttributes: new { @Class = "control-lable col-md-2" })
 
             <div class="col-md-10">
                 @Html.EditorFor(
-               m => m.PlayerName,
-               new {  htmlAttributes = new { @class = "form-control"}})
+                m => m.PlayerName,
+                new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(
-               m => m.PlayerName,
-               "",
-               new {  @class = "text-dander"})
+                m => m.PlayerName,
+                "",
+                new { @class = "text-dander" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(
-           m => m.Guess,            //Changed to Guess
-           htmlAttributes: new { @Class = "control-lable col-md-2" })
+             m => m.Guess,            //Changed to Guess
+             htmlAttributes: new { @Class = "control-lable col-md-2" })
 
             <div class="col-md-10">
                 @Html.EditorFor(
-               m => m.Guess,            //Changed to Guess  the other property
-               new { htmlAttributes = new { @class = "form-control" } })
+                m => m.Guess,            //Changed to Guess  the other property
+                new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(
-               m => m.PlayerName,
-               "",
-               new { @class = "text-dander" })
+                m => m.PlayerName,
+                "",
+                new { @class = "text-dander" })
             </div>
         </div>
 
@@ -55,6 +59,7 @@
         </div>
 
     </div>
+    }
 }
 else
 {
