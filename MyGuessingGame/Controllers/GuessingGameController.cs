@@ -15,11 +15,19 @@ namespace MyGuessingGame.Controllers
 
             return View();
         }
-        
+
+        private bool GuessWasCorrect(int guess) => guess == (int)Session["Answer"];
+        //private bool <BoolName>(int <name>) => <name> == (int)<RandomGenaratorName>
+
         //Post
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Index(GuessingGameModel model)
         {
+            if (ModelState.IsValid) //TODO ask about ModelState
+            {
+                ViewBag.Win = GuessWasCorrect(model.Guess);
+            }
 
             return View();
         }
