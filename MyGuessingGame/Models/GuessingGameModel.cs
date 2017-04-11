@@ -13,6 +13,7 @@ namespace MyGuessingGame.Models
         [MinLength(1, ErrorMessage = "Your name is too short.")]
         [MaxLength(30, ErrorMessage = "Your name is too long.")]
         public string PlayerName { get; set; }
+
         [Display(Name = "Enter a number.")]
         [Required(ErrorMessage = "Please enter a number.")]
         [Range(1, 10, ErrorMessage = "Guess a number between 1 and 10.")]

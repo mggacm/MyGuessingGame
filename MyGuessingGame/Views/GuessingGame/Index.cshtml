@@ -10,10 +10,13 @@
 {
     if (ViewBag.Win != null)
     {
-        <h2>Sorry Try again. @Model.Guess  was wrong.</h2>
+        <h2>Sorry, @Model.PlayerName,@Model.Guess  is incorrect.</h2>
     }
     using (Html.BeginForm())
     {
+
+        @Html.AntiForgeryToken()
+
     <div class="form-horizontal" >
         @Html.ValidationSummary(
              false,                           // bool? 
@@ -46,7 +49,7 @@
                 m => m.Guess,            //Changed to Guess  the other property
                 new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(
-                m => m.PlayerName,
+                m => m.Guess,
                 "",
                 new { @class = "text-dander" })
             </div>

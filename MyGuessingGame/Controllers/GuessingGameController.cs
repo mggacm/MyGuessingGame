@@ -29,7 +29,7 @@ namespace MyGuessingGame.Controllers
                 ViewBag.Win = GuessWasCorrect(model.Guess);
             }
 
-            return View();
+            return View(model);
         }
 
     }
